@@ -230,8 +230,8 @@ print layer_1
 							link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
 						});
 						
-						var width = 960,
-								height = 500;
+						var width = $("#svg").width();
+						var height = $("#svg").height();
 						
 						var force = d3.layout.force()
 								.nodes(d3.values(nodes))
