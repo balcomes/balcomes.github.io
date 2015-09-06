@@ -40,7 +40,7 @@
 							<ul>
 								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
 								<li><a href="#mathjax" id="mathjax-link" class="skel-layers-ignoreHref"><span class="icon fa-th">MathJax</span></a></li>
-								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+								<li><a href="#highlight" id="highligh-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
 								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
 							</ul>
 						</nav>
@@ -65,8 +65,7 @@
 						<div class="container">
 							<header>
 								<h2 class="alt"></h2>
-								<p><br />
-								</p>
+								<p>Hi...</p>
 							</header>
 							<footer>
 								<a href="#mathjax" class="button scrolly">MathJax</a>
@@ -84,14 +83,26 @@
 						</div>
 					</section>
 
-				<!-- About Me -->
-					<section id="about" class="three">
+				<!-- Highlight.js -->
+					<section id="highlight" class="three">
 						<div class="container">
 							<header>
-								<h2>About Me</h2>
+								<h2>Highlight.js</h2>
 							</header>
-							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
-							<p>Insert something later...</p>
+							<pre><code class="python">
+								@requires_authorization
+								def somefunc(param1='', param2=0):
+										r'''A docstring'''
+										if param1 > param2: # interesting
+												print 'Gre\'ater'
+										return (param2 - param1 + 1) or None
+								
+								class SomeClass:
+										pass
+								
+								>>> message = '''interpreter
+								... prompt'''
+							</code></pre>
 						</div>
 					</section>
 			</div>
