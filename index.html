@@ -45,6 +45,7 @@
 								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
 								<li><a href="#mathjax" id="mathjax-link" class="skel-layers-ignoreHref"><span class="icon fa-calculator">MathJax</span></a></li>
 								<li><a href="#highlight" id="highlight-link" class="skel-layers-ignoreHref"><span class="icon fa-code">Highlight.js</span></a></li>
+								<li><a href="#d3js" id="d3js-link" class="skel-layers-ignoreHref"><span class="icon fa-code">D3.js</span></a></li>
 							</ul>
 						</nav>
 				</div>
@@ -151,7 +152,6 @@ print layer_1
 			<section id="d3js" class="four">
 				<div class="container">
 					<header>
-						<h2>D3.js</h2>
 					</header>
 					<div id="svg">
 						<style>
@@ -184,9 +184,8 @@ print layer_1
 								pointer-events: none;
 								text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
 							}
-							
+														
 						</style>
-						<body>
 						<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 						<script>
 						
@@ -229,10 +228,10 @@ print layer_1
 							link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
 							link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
 						});
-						
-						var width = 700;
-						var height = 700;
-						
+																		
+						var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+						var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+												
 						var force = d3.layout.force()
 								.nodes(d3.values(nodes))
 								.links(links)
@@ -245,6 +244,16 @@ print layer_1
 						var svg = d3.select("body").append("svg")
 								.attr("width", width)
 								.attr("height", height);
+														
+						var force = d3.layout.force()
+								.nodes(d3.values(nodes))
+								.links(links)
+								.size([width, height])
+								.linkDistance(60)
+								.charge(-300)
+								.on("tick", tick)
+								.start();
+						
 						
 						// Per-type markers, as they don't inherit styles.
 						svg.append("defs").selectAll("marker")
@@ -295,7 +304,17 @@ print layer_1
 						
 						function transform(d) {
 							return "translate(" + d.x + "," + d.y + ")";
-						}		
+						}
+						
+						resize();
+						d3.select(window).on("resize", resize);
+						
+						function resize() {
+							width = window.innerWidth, height = window.innerHeight;
+							svg.attr("width", width).attr("height", height);
+							force.size([width, height]).resume();
+						}
+						
 						</script>
 					</div>
 					<footer>
