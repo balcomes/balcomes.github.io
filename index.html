@@ -230,7 +230,7 @@ print layer_1
 								});
 																				
 								var width = window.innerWidth - 16;
-								var height = window.innerHeight - 16;
+								var height = window.innerHeight;
 																				
 								var force = d3.layout.force()
 										.nodes(d3.values(nodes))
@@ -311,7 +311,7 @@ print layer_1
 								
 								function resize() {
 									width = window.innerWidth - 16;
-									height = window.innerHeight - 16;
+									height = window.innerHeight;
 									svg.attr("width", width).attr("height", height);
 									force.size([width, height]).resume();
 								}
